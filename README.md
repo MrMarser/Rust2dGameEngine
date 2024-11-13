@@ -14,5 +14,5 @@
 ## Installation & Usage
 Currently, no SDK is required, as the project is in its early stages. Detailed installation instructions will be added in future updates.
 
-## Contact
+## Сontact for ideas and suggestions 
 - **Discord**: mrmarser

@@ -1,3 +1,5 @@
+use settings::Settings;
+
 use winit::{
     event::*,
     event_loop::EventLoop,
@@ -18,6 +20,7 @@ fn main() {
         .with_title("MarsEngine")
         .build(&event_loop)
         .unwrap();
+
 
 
     event_loop.run(move |event, _, control_flow| {

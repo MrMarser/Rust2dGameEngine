@@ -1,4 +1,6 @@
-use settings::Settings;
+use std::time::{Duration, Instant};
+use settings::ApplySettings;
+use std::sync::{Arc, Mutex};
 
 use winit::{
     event::*,
@@ -10,23 +12,33 @@ use winit::event_loop::ControlFlow;
 
 fn main() {
 
+
+
+
     let event_loop = EventLoop::new();
 
     let window_size: PhysicalSize<u32> = (640, 480).into();
 
-    let _window = WindowBuilder::new()
+    let window = WindowBuilder::new()
         .with_fullscreen(None)
         .with_inner_size(window_size)
-        .with_title("MarsEngine")
+        .with_title("Rust2dGameEngine")
         .build(&event_loop)
         .unwrap();
 
+    let framerate = Arc::new(Mutex::new(60));
+    ApplySettings::apply_window_settings(&window, Arc::clone(&framerate));
 
 
     event_loop.run(move |event, _, control_flow| {
-
-        *control_flow = ControlFlow::Poll;
-
+        let fps = *framerate.lock().unwrap();
+        if fps == 0 {
+            *control_flow = ControlFlow::Poll;
+        } else {
+            let frame_duration = Duration::from_secs_f64(1.0 / fps as f64);
+            let next_frame_time = Instant::now() + frame_duration;
+            *control_flow = ControlFlow::WaitUntil(next_frame_time);
+        }
         match event {
             Event::MainEventsCleared => {
 

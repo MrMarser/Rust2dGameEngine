@@ -6,3 +6,4 @@ edition = "2021"
 [dependencies]
 serde = "*"
 serde_json = "*"
+winit = "0.25.0"

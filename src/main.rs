@@ -1,5 +1,5 @@
-use core::initialize_game;
+use core::core;
 
 fn main() {
-    initialize_game();
+    core();
 }

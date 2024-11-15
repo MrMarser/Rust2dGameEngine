@@ -1,14 +1,31 @@
+[workspace]
+members = [
+    "src/core",
+    "src/graphics",
+    "src/physics",
+    "src/audio",
+    "src/resources",
+    "src/scripting",
+    "src/scenes",
+]
+
+exclude = [
+    "tools"
+]
+
 [package]
-name = "Rust2dGameEngine"
+name = "engine"
 version = "0.1.0"
 edition = "2021"
+authors = ["Nikita Guzarskii <nikitaguzarskiy@gmail.com>"]
+
+
 
 [dependencies]
-wgpu = "*"
-winit = "0.25.0"
-
-[dependencies.settings]
-path = "settings"
-
-[dependencies.core]
-path = "core"
+core = {path = "src/core"}
+audio = {path = "src/audio"}
+graphics = {path = "src/graphics"}
+physics = {path = "src/physics"}
+resources = {path = "src/resources"}
+scenes = {path = "src/scenes"}
+scripting = {path = "src/scripting"}
